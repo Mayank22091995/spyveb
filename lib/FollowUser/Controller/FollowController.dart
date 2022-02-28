@@ -1,10 +1,5 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:spyveb/FollowUser/Model/FollowModel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:spyveb/Network/request.dart';
 import 'package:spyveb/Network/url.dart';
 
