@@ -269,10 +269,13 @@ class _FollowuserviewState extends State<Followuserview> {
                                                                             .w400),
                                                               ),
                                                               Text(
-                                                                "₹" +
-                                                                    data[i]
-                                                                        .collectionPrice
-                                                                        .toString(),
+                                                                data[i].collectionPrice ==
+                                                                        null
+                                                                    ? "₹0"
+                                                                    : "₹" +
+                                                                        data[i]
+                                                                            .collectionPrice
+                                                                            .toString(),
                                                                 softWrap: true,
                                                                 overflow:
                                                                     TextOverflow
