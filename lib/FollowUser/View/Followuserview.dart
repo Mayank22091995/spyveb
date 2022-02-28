@@ -268,6 +268,7 @@ class _FollowuserviewState extends State<Followuserview> {
                                                                         FontWeight
                                                                             .w400),
                                                               ),
+                                                              //
                                                               Text(
                                                                 data[i].collectionPrice ==
                                                                         null
