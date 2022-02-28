@@ -4,6 +4,7 @@ import 'package:spyveb/Style/AppColor.dart';
 import 'package:spyveb/Style/AppString.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:intl/intl.dart';
 
 class Followuserview extends StatefulWidget {
   const Followuserview({Key? key}) : super(key: key);
@@ -128,6 +129,11 @@ class _FollowuserviewState extends State<Followuserview> {
                                           (BuildContext context, int i) {
                                         var data = controller
                                             .followModel.value.results;
+                                        var dateRelease = dateFormateShow(
+                                            controller.followModel.value
+                                                .results![i].releaseDate
+                                                .toString());
+
                                         return Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -242,21 +248,30 @@ class _FollowuserviewState extends State<Followuserview> {
                                                                           .w800),
                                                             ),
                                                           ),
-                                                          Container(
-                                                            decoration: BoxDecoration(
-                                                                color: orange1,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20)),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(6.0),
-                                                              child: Text(
-                                                                "#" +
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(6.0),
+                                                            child:
+                                                                Row(children: [
+                                                              const Text(
+                                                                pricelbl + " ",
+                                                                softWrap: true,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        12,
+                                                                    color: grey,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                              Text(
+                                                                "₹" +
                                                                     data[i]
-                                                                        .primaryGenreName
+                                                                        .collectionPrice
                                                                         .toString(),
                                                                 softWrap: true,
                                                                 overflow:
@@ -271,64 +286,47 @@ class _FollowuserviewState extends State<Followuserview> {
                                                                         FontWeight
                                                                             .w400),
                                                               ),
-                                                            ),
+                                                            ]),
                                                           ),
-                                                          SizedBox(
-                                                            width: 140,
-                                                            child: Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  SizedBox(
-                                                                    width: 60,
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          "4.5"
-                                                                              .toString(),
-                                                                          softWrap:
-                                                                              true,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontWeight: FontWeight.w600),
-                                                                        ),
-                                                                        const SizedBox(
-                                                                            width:
-                                                                                4),
-                                                                        SizedBox(
-                                                                          width:
-                                                                              20,
-                                                                          height:
-                                                                              20,
-                                                                          child:
-                                                                              Image.asset("asset/images/start.png"),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                    width: 60,
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Text(
-                                                                          "0.5 mi"
-                                                                              .toString(),
-                                                                          softWrap:
-                                                                              true,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style: const TextStyle(
-                                                                              fontSize: 14,
-                                                                              fontWeight: FontWeight.w600),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ]),
-                                                          )
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(6.0),
+                                                            child:
+                                                                Row(children: [
+                                                              const Text(
+                                                                releseDatelbl +
+                                                                    " ",
+                                                                softWrap: true,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        12,
+                                                                    color: grey,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                              Text(
+                                                                dateRelease
+                                                                    .toString(),
+                                                                softWrap: true,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                style: const TextStyle(
+                                                                    fontSize:
+                                                                        12,
+                                                                    color:
+                                                                        orange2,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                            ]),
+                                                          ),
                                                         ],
                                                       ),
                                                     ),
@@ -451,5 +449,17 @@ class _FollowuserviewState extends State<Followuserview> {
         ),
       ),
     );
+  }
+
+  String dateFormateShow(String date) {
+    if (date != "null") {
+      var inputDate = DateTime.parse(date);
+      DateTime parseDate = DateTime.parse(date);
+      var outputFormat = DateFormat('dd/MM/yyyy');
+      var outputDate = outputFormat.format(inputDate);
+      return outputDate;
+    } else {
+      return "";
+    }
   }
 }
