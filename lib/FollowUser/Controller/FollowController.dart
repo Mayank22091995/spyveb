@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:spyveb/FollowUser/Model/FollowModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:spyveb/Network/request.dart';
+import 'package:spyveb/Network/url.dart';
 
 class Followcontroller extends GetxController {
   Rx<FollowModel> followModel = FollowModel().obs;
@@ -16,26 +20,29 @@ class Followcontroller extends GetxController {
         totalFollow.value++;
       }
     }
-    setLocalData();
     update();
   }
 
-  initLocalData() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    if (_prefs.getString("jsonData") == null) {
-      String response = await rootBundle.loadString('asset/data.txt');
-      followModel.value = followModelFromJson(response);
-      _prefs.setString("jsonData", followModelToJson(followModel.value));
-      totalFollowCheck();
-    } else {
-      var data = _prefs.getString("jsonData");
-      followModel.value = followModelFromJson(data.toString());
-      totalFollowCheck();
+  void getAPIDATA() async {
+    try {
+      Request request = Request(
+        url: urlBase +
+            urlArtistData +
+            "id=" +
+            "909253" +
+            "&" +
+            "entity=" +
+            "album",
+      );
+      await request.get().then((value) {
+        print(value.body);
+        if (value.statusCode == 200) {
+          followModel.value = followModelFromJson(value.body);
+          update();
+        }
+      });
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
     }
-  }
-
-  setLocalData() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _prefs.setString("jsonData", followModelToJson(followModel.value));
   }
 }

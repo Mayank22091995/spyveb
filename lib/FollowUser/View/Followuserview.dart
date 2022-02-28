@@ -20,7 +20,7 @@ class _FollowuserviewState extends State<Followuserview> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller.initLocalData();
+    controller.getAPIDATA();
   }
 
   @override
@@ -221,7 +221,7 @@ class _FollowuserviewState extends State<Followuserview> {
                                                             .symmetric(
                                                         horizontal: 16),
                                                     child: SizedBox(
-                                                      height: 75,
+                                                      height: 70,
                                                       child: Column(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -248,89 +248,73 @@ class _FollowuserviewState extends State<Followuserview> {
                                                                           .w800),
                                                             ),
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(6.0),
-                                                            child:
-                                                                Row(children: [
-                                                              const Text(
-                                                                pricelbl + " ",
-                                                                softWrap: true,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        12,
-                                                                    color: grey,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                              //
-                                                              Text(
-                                                                data[i].collectionPrice ==
-                                                                        null
-                                                                    ? "₹0"
-                                                                    : "₹" +
-                                                                        data[i]
-                                                                            .collectionPrice
-                                                                            .toString(),
-                                                                softWrap: true,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: const TextStyle(
-                                                                    fontSize:
-                                                                        12,
-                                                                    color:
-                                                                        orange2,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                            ]),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(6.0),
-                                                            child:
-                                                                Row(children: [
-                                                              const Text(
-                                                                releseDatelbl +
-                                                                    " ",
-                                                                softWrap: true,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        12,
-                                                                    color: grey,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                              Text(
-                                                                dateRelease
-                                                                    .toString(),
-                                                                softWrap: true,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: const TextStyle(
-                                                                    fontSize:
-                                                                        12,
-                                                                    color:
-                                                                        orange2,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                            ]),
-                                                          ),
+                                                          Row(children: [
+                                                            const Text(
+                                                              pricelbl + " ",
+                                                              softWrap: true,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: TextStyle(
+                                                                  fontSize: 12,
+                                                                  color: grey,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                            //
+                                                            Text(
+                                                              data[i].collectionPrice ==
+                                                                      null
+                                                                  ? "₹0"
+                                                                  : "₹" +
+                                                                      data[i]
+                                                                          .collectionPrice
+                                                                          .toString(),
+                                                              softWrap: true,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: const TextStyle(
+                                                                  fontSize: 12,
+                                                                  color:
+                                                                      orange2,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ]),
+                                                          Row(children: [
+                                                            const Text(
+                                                              releseDatelbl +
+                                                                  " ",
+                                                              softWrap: true,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: TextStyle(
+                                                                  fontSize: 12,
+                                                                  color: grey,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                            Text(
+                                                              dateRelease
+                                                                  .toString(),
+                                                              softWrap: true,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: const TextStyle(
+                                                                  fontSize: 12,
+                                                                  color:
+                                                                      orange2,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ]),
                                                         ],
                                                       ),
                                                     ),
